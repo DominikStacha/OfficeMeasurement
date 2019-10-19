@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationConstant } from './shared/constants/navigation-constant';
+import { NavigationConstant } from './shared/constants/navigation.constant';
 import { NavigationItem } from './shared/models/navigation-item';
 
 @Component({
