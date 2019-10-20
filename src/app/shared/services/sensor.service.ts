@@ -13,11 +13,11 @@ export class SensorService implements IService {
 
   }
 
-  public Create(sensor: Sensor): Observable<Sensor> {
+  public create(sensor: Sensor): Observable<Sensor> {
     return this.http.post<Sensor>(this.apiUrl.create, sensor);
   }
 
-  public Update(sensor: Sensor): Observable<Sensor> {
+  public update(sensor: Sensor): Observable<Sensor> {
     return this.http.put<Sensor>(this.apiUrl.update, sensor);
   }
 }
