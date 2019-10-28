@@ -36,29 +36,48 @@ export class ChartComponent implements OnInit {
     return this._sensor.name + " - " + this.yAxisName;
   }
 
+  private get color(): string {
+    switch (this.chartType) {
+      case 'temperature':
+        return '#2E86C1';
+
+      case 'humidity':
+        return '#28B463';
+
+      case 'airPollution':
+        return '#F39C12';
+    }
+  }
+
   private get yAxisName(): string {
-    if (this.chartType == 'temperature') {
-      return 'Teplota';
-    } else if (this.chartType == 'humidity') {
-      return 'Vlhkost';
-    } else if (this.chartType == 'airPollution') {
-      return 'Znečištění vzduchu';
+    switch (this.chartType) {
+      case 'temperature':
+        return 'Teplota';
+
+      case 'humidity':
+        return 'Vlhkost';
+
+      case 'airPollution':
+        return 'Znečištění vzduchu';
     }
   }
 
   private get yAxisFormatterFunction(): FormatterCallbackFunction<AxisLabelsFormatterContextObject> {
-    if (this.chartType == 'temperature') {
-      return function () {
-        return this.value + ' °C';
-      }
-    } else if (this.chartType == 'humidity') {
-      return function () {
-        return this.value + ' %';
-      }
-    } else if (this.chartType == 'airPollution') {
-      return function () {
-        return this.value + ' PPM';
-      }
+    switch (this.chartType) {
+      case 'temperature':
+        return function () {
+          return this.value + ' °C';
+        }
+
+      case 'humidity':
+        return function () {
+          return this.value + ' %';
+        }
+
+      case 'airPollution':
+        return function () {
+          return this.value + ' PPM';
+        }
     }
   }
 
@@ -119,7 +138,8 @@ export class ChartComponent implements OnInit {
     this.chart.addSeries({
       name: this.yAxisName,
       showInLegend: false,
-      data: chartData
+      data: chartData,
+      color: this.color
     } as SeriesOptionsType, true, true);
   }
 }

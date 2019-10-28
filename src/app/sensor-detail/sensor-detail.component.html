@@ -1,3 +1,11 @@
-<chart class="chart" [sensor]="sensor" [chartType]="'temperature'" [dataSubject]="temperatureDataSubject"></chart>
-<chart class="chart" [sensor]="sensor" [chartType]="'humidity'" [dataSubject]="humidityDataSubject"></chart>
-<chart class="chart" [sensor]="sensor" [chartType]="'airPollution'" [dataSubject]="airPollutionDataSubject"></chart>
+<div class="chart">
+  <chart [sensor]="sensor" [chartType]="'temperature'" [dataSubject]="temperatureDataSubject"></chart>
+</div>
+
+<div class="chart">
+  <chart [sensor]="sensor" [chartType]="'humidity'" [dataSubject]="humidityDataSubject"></chart>
+</div>
+
+<div class="chart">
+  <chart [sensor]="sensor" [chartType]="'airPollution'" [dataSubject]="airPollutionDataSubject"></chart>
+</div>
