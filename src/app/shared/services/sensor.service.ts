@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiConstants } from '../constants/api.constants';
+import { ApiConstant } from '../constants/api.constant';
 import { Sensor } from '../models/sensor';
 import { IService } from './IService';
 
 @Injectable()
 export class SensorService implements IService {
   public get apiUrl() {
-    return ApiConstants.sensor;
+    return ApiConstant.sensor;
   }
 
   constructor(private http: HttpClient) {

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
-import { SeriesOptionsType } from 'highcharts';
+import { AxisLabelsFormatterContextObject, FormatterCallbackFunction, SeriesOptionsType } from 'highcharts';
+import { ChartData } from '../shared/models/chart-data';
 import { MeasurementService } from '../shared/services/measurement.service';
 
 @Component({
@@ -9,17 +10,48 @@ import { MeasurementService } from '../shared/services/measurement.service';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
+  @Input() chartType: 'temperature' | 'humidity' | 'airPollution' = 'temperature';
+
+  private get chartTitleText(): string {
+    return 'Senzor 1 - teplota';
+  }
+
+  private get yAxisName(): string {
+    if (this.chartType == 'temperature') {
+      return 'Teplota';
+    } else if (this.chartType == 'humidity') {
+      return 'Vlhkost';
+    } else if (this.chartType == 'airPollution') {
+      return 'Znečištění vzduchu';
+    }
+  }
+
+  private get yAxisFormatterFunction(): FormatterCallbackFunction<AxisLabelsFormatterContextObject> {
+    if (this.chartType == 'temperature') {
+      return function () {
+        return this.value + ' °C';
+      }
+    } else if (this.chartType == 'humidity') {
+      return function () {
+        return this.value + ' %';
+      }
+    } else if (this.chartType == 'airPollution') {
+      return function () {
+        return this.value + ' PPM';
+      }
+    }
+  }
+
   chart = new Chart({
     chart: {
       type: 'area'
     },
 
     title: {
-      text: 'Senzor 1 - teplota'
+      text: this.chartTitleText
     },
 
     tooltip: {
-      //formatter: this.formatDateLabelTooltip,
       xDateFormat: "%H:%M:%S  %d.%m.%Y"
     },
 
@@ -36,12 +68,10 @@ export class ChartComponent implements OnInit {
 
     yAxis: {
       title: {
-        text: 'Teplota'
+        text: this.yAxisName
       },
       labels: {
-        formatter: function () {
-          return this.value + ' °C';
-        }
+        formatter: this.yAxisFormatterFunction
       }
     }
   });
@@ -63,5 +93,9 @@ export class ChartComponent implements OnInit {
       } as SeriesOptionsType, true, true);
     });
     //console.log(this.chartElement);
+  }
+
+  setChartData(chartData: ChartData): void {
+
   }
 }

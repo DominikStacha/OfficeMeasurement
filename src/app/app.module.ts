@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
+import { ChartDataService } from './shared/services/chart-data.service';
 import { MeasurementService } from './shared/services/measurement.service';
 import { SensorService } from './shared/services/sensor.service';
 
@@ -34,7 +35,8 @@ import { SensorService } from './shared/services/sensor.service';
   ],
   providers: [
     MeasurementService,
-    SensorService
+    SensorService,
+    ChartDataService
   ],
   bootstrap: [AppComponent]
 })
