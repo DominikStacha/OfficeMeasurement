@@ -4,7 +4,7 @@ export const ChartInterval = {
   H12: 12,
   D1: 24,
   D4: 96,
-  D7: 168,
-  D14: 336,
+  W1: 168,
+  W2: 336,
   M1: 744
 }

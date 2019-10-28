@@ -37,7 +37,7 @@ export class SensorDetailComponent implements OnInit {
 
       this.sensorId = params.id;
 
-      this.chartDataService.getLastHoursForSensor(this.sensorId, ChartInterval.D1).subscribe(sensorData => {
+      this.chartDataService.getLastHoursForSensor(this.sensorId, ChartInterval.W1).subscribe(sensorData => {
         this.sensorData = sensorData;
         this.sensor = sensorData.sensor;
         this.temperatureDataSubject.next(sensorData.temperatureData);
