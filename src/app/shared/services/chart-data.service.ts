@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiConstant } from '../constants/api.constant';
-import { Measurement } from '../models/measurement';
-import { IService } from './IService';
+import { IService } from '../models/IService';
+import { SensorData } from '../models/sensor-data';
 
 @Injectable()
 export class ChartDataService implements IService {
@@ -15,16 +15,16 @@ export class ChartDataService implements IService {
 
   }
 
-  public getRange(sensorId: number, lastHours: number, limitCount?: number): Observable<Measurement[]> {
+  public getLastHoursForSensor(sensorId: number, lastHours: number, limitCount?: number): Observable<SensorData> {
     let params = {
       sensorId: sensorId.toString(),
-      fromDate: lastHours.toString()
+      lastHours: lastHours.toString()
     }
 
     if (limitCount) {
       params['limitCount'] = limitCount;
     }
 
-    return this.http.get<Measurement[]>(this.apiUrl.getLastHoursForSensor, { params: params });
+    return this.http.get<SensorData>(this.apiUrl.getLastHoursForSensor, { params: params });
   }
 }

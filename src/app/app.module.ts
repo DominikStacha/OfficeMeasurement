@@ -15,13 +15,15 @@ import { MaterialModule } from './material/material.module';
 import { ChartDataService } from './shared/services/chart-data.service';
 import { MeasurementService } from './shared/services/measurement.service';
 import { SensorService } from './shared/services/sensor.service';
+import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    ChartComponent
+    ChartComponent,
+    SensorDetailComponent
   ],
   imports: [
     CommonModule,

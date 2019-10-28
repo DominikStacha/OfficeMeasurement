@@ -12,6 +12,6 @@ export const ApiConstant = {
   },
 
   chartData: {
-    getLastHoursForSensor: ApiUrl + "ChartData/GetRange",
+    getLastHoursForSensor: ApiUrl + "ChartData/GetLastHoursForSensor",
   }
 }

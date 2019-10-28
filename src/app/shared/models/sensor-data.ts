@@ -1,9 +1,10 @@
-import { ChartData } from './chart-data';
+import { ChartPoint } from './chart-point';
+import { Sensor } from './sensor';
 
 export class SensorData {
-  sensorId: number;
+  sensor: Sensor;
   lastHours: number;
-  temperatureData: ChartData[];
-  humidityData: ChartData[];
-  airPollutionData: ChartData[];
+  temperatureData: ChartPoint[];
+  humidityData: ChartPoint[];
+  airPollutionData: ChartPoint[];
 }

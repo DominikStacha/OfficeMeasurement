@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiConstant } from '../constants/api.constant';
-import { ChartData } from '../models/chart-data';
-import { IService } from './IService';
+import { ChartPoint } from '../models/chart-point';
+import { IService } from '../models/IService';
 
 @Injectable()
 export class MeasurementService implements IService {
@@ -15,7 +15,7 @@ export class MeasurementService implements IService {
 
   }
 
-  public testTemperatureData(): Observable<ChartData[]> {
-    return this.http.get<ChartData[]>(this.apiUrl.testTemperatureData);
+  public testTemperatureData(): Observable<ChartPoint[]> {
+    return this.http.get<ChartPoint[]>(this.apiUrl.testTemperatureData);
   }
 }

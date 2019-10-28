@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
-import { AxisLabelsFormatterContextObject, FormatterCallbackFunction, SeriesOptionsType } from 'highcharts';
-import { ChartData } from '../shared/models/chart-data';
+import { AxisLabelsFormatterContextObject, FormatterCallbackFunction, SeriesOptionsType, TitleOptions } from 'highcharts';
+import { BehaviorSubject } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { ChartPoint } from '../shared/models/chart-point';
+import { Sensor } from '../shared/models/sensor';
 import { MeasurementService } from '../shared/services/measurement.service';
 
 @Component({
@@ -10,10 +13,27 @@ import { MeasurementService } from '../shared/services/measurement.service';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
+  _sensor: Sensor;
+  @Input() set sensor(value: Sensor) {
+    this._sensor = value;
+
+    //update title text
+    if (!this.chart) return;
+    this.chart.ref.setTitle({
+      text: this.chartTitleText
+    } as TitleOptions);
+  }
   @Input() chartType: 'temperature' | 'humidity' | 'airPollution' = 'temperature';
+  @Input() dataSubject: BehaviorSubject<ChartPoint[]>;
+  get data(): ChartPoint[] {
+    return this.dataSubject.value;
+  }
+
+  chart: Chart;
 
   private get chartTitleText(): string {
-    return 'Senzor 1 - teplota';
+    if (!this._sensor) return "Loading data..";
+    return this._sensor.name + " - " + this.yAxisName;
   }
 
   private get yAxisName(): string {
@@ -42,41 +62,6 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  chart = new Chart({
-    chart: {
-      type: 'area'
-    },
-
-    title: {
-      text: this.chartTitleText
-    },
-
-    tooltip: {
-      xDateFormat: "%H:%M:%S  %d.%m.%Y"
-    },
-
-    credits: {
-      enabled: false
-    },
-
-    xAxis: {
-      title: {
-        text: 'Čas měření'
-      },
-      type: 'datetime'
-    },
-
-    yAxis: {
-      title: {
-        text: this.yAxisName
-      },
-      labels: {
-        formatter: this.yAxisFormatterFunction
-      }
-    }
-  });
-
-
   constructor(
     private measurementService: MeasurementService
   ) {
@@ -84,18 +69,57 @@ export class ChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.measurementService.testTemperatureData().subscribe(data => {
-      console.log(data);
-      this.chart.addSeries({
-        name: 'Teplota',
-        showInLegend: false,
-        data: data
-      } as SeriesOptionsType, true, true);
-    });
-    //console.log(this.chartElement);
+    this.initChart();
+    this.dataSubject.pipe(filter(chartData => !!chartData)).subscribe(chartData => {
+      this.setChartData(chartData);
+    })
   }
 
-  setChartData(chartData: ChartData): void {
+  initChart(): void {
+    this.chart = new Chart({
+      chart: {
+        type: 'area'
+      },
 
+      title: {
+        text: this.chartTitleText
+      },
+
+      tooltip: {
+        xDateFormat: "%H:%M:%S  %d.%m.%Y"
+      },
+
+      credits: {
+        enabled: false
+      },
+
+      xAxis: {
+        title: {
+          text: 'Čas měření'
+        },
+        type: 'datetime'
+      },
+
+      yAxis: {
+        title: {
+          text: this.yAxisName
+        },
+        labels: {
+          formatter: this.yAxisFormatterFunction
+        }
+      }
+    });
+  }
+
+  setChartData(chartData: ChartPoint[]): void {
+    //remove previous data serie
+    this.chart.removeSeries(0);
+
+    //add new data serie
+    this.chart.addSeries({
+      name: this.yAxisName,
+      showInLegend: false,
+      data: chartData
+    } as SeriesOptionsType, true, true);
   }
 }
