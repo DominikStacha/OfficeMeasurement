@@ -17,6 +17,7 @@ import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 import { ChartDataService } from './shared/services/chart-data.service';
 import { MeasurementService } from './shared/services/measurement.service';
 import { SensorService } from './shared/services/sensor.service';
+import { NewSensorComponent } from './new-sensor/new-sensor.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SensorService } from './shared/services/sensor.service';
     HomeComponent,
     AboutComponent,
     ChartComponent,
-    SensorDetailComponent
+    SensorDetailComponent,
+    NewSensorComponent
   ],
   imports: [
     CommonModule,
