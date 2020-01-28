@@ -5,7 +5,7 @@ import { ChartInterval } from '../shared/constants/chart-interval.constant';
 import { ChartPoint } from '../shared/models/chart-point';
 import { Sensor } from '../shared/models/sensor';
 import { SensorData } from '../shared/models/sensor-data';
-import { ChartDataService } from '../shared/services/chart-data.service';
+import { ChartService } from '../shared/services/chart.service';
 
 @Component({
   selector: 'app-sensor-detail',
@@ -25,7 +25,7 @@ export class SensorDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private chartDataService: ChartDataService
+    private chartDataService: ChartService
   ) { }
 
   ngOnInit(): void {

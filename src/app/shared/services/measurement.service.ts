@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiConstant } from '../constants/api.constant';
 import { ChartPoint } from '../models/chart-point';
-import { IService } from '../models/IService';
+import { IService } from '../interfaces/IService';
 
 @Injectable()
 export class MeasurementService implements IService {

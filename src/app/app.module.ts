@@ -13,11 +13,11 @@ import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
+import { NewSensorComponent } from './new-sensor/new-sensor.component';
 import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
-import { ChartDataService } from './shared/services/chart-data.service';
+import { ChartService } from './shared/services/chart.service';
 import { MeasurementService } from './shared/services/measurement.service';
 import { SensorService } from './shared/services/sensor.service';
-import { NewSensorComponent } from './new-sensor/new-sensor.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { NewSensorComponent } from './new-sensor/new-sensor.component';
   providers: [
     MeasurementService,
     SensorService,
-    ChartDataService
+    ChartService
   ],
   bootstrap: [AppComponent]
 })
