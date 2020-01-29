@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavigationConstant } from './shared/constants/navigation.constant';
 import { NavigationItem } from './shared/models/navigation-item.model';
 
@@ -12,7 +13,9 @@ export class AppComponent implements OnInit, OnDestroy {
     return NavigationConstant;
   }
 
-  constructor() {
+  constructor(
+    private _router: Router
+  ) {
 
   }
 
@@ -21,5 +24,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
+  }
+
+  home(): void {
+    this._router.navigate(['']);
   }
 }
