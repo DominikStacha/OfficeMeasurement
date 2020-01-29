@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-sidenav-container {
+  min-height: 100%;
+}
+
+.mat-sidenav {
+  min-width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  background: #0b2f35;
+}
+
+.mat-drawer-container {
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.mat-sidenav-content {
+  max-width: 800px;
+  margin: 0 auto !important;
+  padding: 5px 20px 5px 20px;
+  float: none !important;
+  background-color: white;
+  border-radius: 15px;
+}
