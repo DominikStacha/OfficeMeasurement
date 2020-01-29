@@ -1,5 +1,5 @@
-import { ChartPoint } from './chart-point';
-import { Sensor } from './sensor';
+import { ChartPoint } from './chart-point.model';
+import { Sensor } from './sensor.model';
 
 export class SensorData {
   sensor: Sensor;

@@ -1,4 +1,4 @@
-import { Sensor } from './sensor';
+import { Sensor } from './sensor.model';
 
 export class Measurement {
   id: number;
