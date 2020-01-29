@@ -48,11 +48,15 @@ body {
 }
 
 .mat-form-field-underline {
-  background-color: #fae100 !important;
+  background-color: #3cdbc0 !important;
 }
 
 .mat-form-field-ripple {
-  background-color: #fae100 !important;
+  background-color: #3cdbc0 !important;
+}
+
+.mat-form-field {
+  margin-bottom: 5px;
 }
 
 .mat-raised-button.mat-primary {
@@ -61,4 +65,12 @@ body {
 
 .mat-simple-snackbar-action {
   color: #3cdbc0;
+}
+
+.mat-progress-bar-buffer {
+  background-color: #0b2f35 !important;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: #fae100 !important;
 }

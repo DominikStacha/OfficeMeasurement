@@ -1,9 +1,13 @@
+<mat-progress-bar *ngIf="_progressBarService.isVisible" mode="query" style="position: fixed; top: 0px; left: 0px">
+</mat-progress-bar>
+
 <mat-toolbar color="primary">
   <h1 (click)="home()">Office Measurement</h1>
   <span class="spacer"></span>
   <button mat-icon-button (click)="navigation.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
+
 </mat-toolbar>
 
 <mat-sidenav-container>

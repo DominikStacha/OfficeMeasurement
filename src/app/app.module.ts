@@ -15,8 +15,10 @@ import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
 import { NewSensorComponent } from './new-sensor/new-sensor.component';
 import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
+import { SensorPreviewComponent } from './sensor-preview/sensor-preview.component';
 import { ChartService } from './shared/services/chart.service';
 import { MeasurementService } from './shared/services/measurement.service';
+import { ProgressBarService } from './shared/services/progress-bar.service';
 import { SensorService } from './shared/services/sensor.service';
 import { SnackService } from './shared/services/snack.service';
 
@@ -26,7 +28,8 @@ import { SnackService } from './shared/services/snack.service';
     HomeComponent,
     ChartComponent,
     SensorDetailComponent,
-    NewSensorComponent
+    NewSensorComponent,
+    SensorPreviewComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +48,7 @@ import { SnackService } from './shared/services/snack.service';
     SensorService,
     ChartService,
     SnackService,
+    ProgressBarService
   ],
   bootstrap: [AppComponent]
 })

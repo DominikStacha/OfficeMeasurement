@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationConstant } from './shared/constants/navigation.constant';
 import { NavigationItem } from './shared/models/navigation-item.model';
+import { ProgressBarService } from './shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private _router: Router
+    private _router: Router,
+    private _progressBarService: ProgressBarService
   ) {
 
   }
 
   ngOnInit(): void {
+
   }
 
   ngOnDestroy(): void {
