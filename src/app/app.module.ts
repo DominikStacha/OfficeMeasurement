@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { MaterialModule } from './material/material.module';
 import { NewSensorComponent } from './new-sensor/new-sensor.component';
 import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 import { SensorPreviewComponent } from './sensor-preview/sensor-preview.component';
+import { ProgressBarInterceptor } from './shared/intercepstors/progress-bar-interceptor';
 import { ChartService } from './shared/services/chart.service';
 import { MeasurementService } from './shared/services/measurement.service';
 import { ProgressBarService } from './shared/services/progress-bar.service';
@@ -48,7 +49,8 @@ import { SnackService } from './shared/services/snack.service';
     SensorService,
     ChartService,
     SnackService,
-    ProgressBarService
+    ProgressBarService,
+    { provide: HTTP_INTERCEPTORS, useClass: ProgressBarInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
