@@ -1,11 +1,11 @@
 <div class="chart">
-  <chart [sensor]="sensor" [chartType]="'temperature'" [dataSubject]="temperatureDataSubject"></chart>
+  <chart [sensor]="sensorData.sensor" [chartType]="'temperature'" [data]="sensorData.temperatureData"></chart>
 </div>
 
 <div class="chart">
-  <chart [sensor]="sensor" [chartType]="'humidity'" [dataSubject]="humidityDataSubject"></chart>
+  <chart [sensor]="sensorData.sensor" [chartType]="'humidity'" [data]="sensorData.humidityData"></chart>
 </div>
 
 <div class="chart">
-  <chart [sensor]="sensor" [chartType]="'airPollution'" [dataSubject]="airPollutionDataSubject"></chart>
+  <chart [sensor]="sensorData.sensor" [chartType]="'airPollution'" [data]="sensorData.airPollutionData"></chart>
 </div>

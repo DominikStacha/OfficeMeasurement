@@ -35,13 +35,13 @@ export class NewSensorComponent implements OnInit {
 
   save(): void {
     if (this.form.invalid) {
-      this._snackService.show('The form is not valid.');
+      this._snackService.show('Form is not valid.');
       this.form.markAllAsTouched();
       return;
     }
 
-    this._sensorService.create(this.form.value).subscribe((createdSensor) => {
-      this._snackService.show('The sensor was successfully created.');
+    this._sensorService.add(this.form.value).subscribe((createdSensor) => {
+      this._snackService.show(`Sensor ${createdSensor.name} was successfully created.`);
       this._router.navigate(['sensor', createdSensor.id]);
     });
   }

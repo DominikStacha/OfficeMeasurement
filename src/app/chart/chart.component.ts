@@ -1,11 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { AxisLabelsFormatterContextObject, FormatterCallbackFunction, SeriesOptionsType, TitleOptions } from 'highcharts';
-import { BehaviorSubject } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { ChartPoint } from '../shared/models/chart-point.model';
 import { Sensor } from '../shared/models/sensor.model';
-import { MeasurementService } from '../shared/services/measurement.service';
 
 @Component({
   selector: 'chart',
@@ -13,29 +10,28 @@ import { MeasurementService } from '../shared/services/measurement.service';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-  _sensor: Sensor;
+  private _sensor: Sensor;
+  private _data: ChartPoint[];
+
+  chart: Chart;
+
+  @Input() chartType: 'temperature' | 'humidity' | 'airPollution' = 'temperature';
   @Input() set sensor(value: Sensor) {
     this._sensor = value;
 
     //update title text
-    if (!this.chart) return;
+    if (!this.chart || !this.chart.ref) return;
     this.chart.ref.setTitle({
       text: this._chartTitleText
     } as TitleOptions);
   }
-  @Input() chartType: 'temperature' | 'humidity' | 'airPollution' = 'temperature';
-  @Input() dataSubject: BehaviorSubject<ChartPoint[]>;
-  get data(): ChartPoint[] {
-    return this.dataSubject.value;
-  }
+  @Input() set data(value: ChartPoint[]) {
+    this._data = value;
 
-  chart: Chart;
+    if (this._data)
+      this.setChartData(this._data);
+  };
 
-  constructor(
-    private _measurementService: MeasurementService
-  ) {
-
-  }
 
   private get _chartTitleText(): string {
     if (!this._sensor) return "Loading data..";
@@ -87,11 +83,16 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  constructor() {
     this.initChart();
-    this.dataSubject.pipe(filter(chartData => !!chartData)).subscribe(chartData => {
-      this.setChartData(chartData);
-    })
+  }
+
+  ngOnInit(): void {
+    this.chart.ref$.subscribe((chart) => {
+      this.chart.ref.setTitle({
+        text: this._chartTitleText
+      } as TitleOptions);
+    });
   }
 
   initChart(): void {

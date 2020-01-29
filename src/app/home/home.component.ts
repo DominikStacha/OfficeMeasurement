@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { SensorPreview } from '../shared/models/sensor-preview.model';
+import { MeasurementService } from '../shared/services/measurement.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  sensorPreviews: SensorPreview[] = [];
 
-  constructor() { }
+  constructor(
+    private _measurementService: MeasurementService
+  ) {
 
-  ngOnInit() {
   }
 
+  ngOnInit(): void {
+    this._measurementService.getPreviewData().subscribe(sensorPreviews => this.sensorPreviews = sensorPreviews);
+  }
 }

@@ -18,7 +18,6 @@ import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 import { SensorPreviewComponent } from './sensor-preview/sensor-preview.component';
 import { ErrorInterceptor } from './shared/intercepstors/error-interceptor';
 import { ProgressBarInterceptor } from './shared/intercepstors/progress-bar-interceptor';
-import { ChartService } from './shared/services/chart.service';
 import { MeasurementService } from './shared/services/measurement.service';
 import { ProgressBarService } from './shared/services/progress-bar.service';
 import { SensorService } from './shared/services/sensor.service';
@@ -48,7 +47,6 @@ import { SnackService } from './shared/services/snack.service';
   providers: [
     MeasurementService,
     SensorService,
-    ChartService,
     SnackService,
     ProgressBarService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

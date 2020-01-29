@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutAlign="space-between start">
+  <h3>{{ preview.sensor.name }}</h3>
+
+  <h4>
+    T: {{ preview.lastTemperature }} °C |
+    H: {{ preview.lastHumidity }} %
+  </h4>
+</div>
+
+<chart [sensor]="preview.sensor" [chartType]="'temperature'" [data]="preview.temperatureData"></chart>

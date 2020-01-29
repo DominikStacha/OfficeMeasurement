@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiConstant } from '../constants/api.constant';
-import { Sensor } from '../models/sensor.model';
 import { IService } from '../interfaces/IService';
+import { Sensor } from '../models/sensor.model';
 
 @Injectable()
 export class SensorService implements IService {
@@ -15,8 +15,8 @@ export class SensorService implements IService {
 
   }
 
-  public create(sensor: Sensor): Observable<Sensor> {
-    return this._http.post<Sensor>(this.apiUrl.create, sensor);
+  public add(sensor: Sensor): Observable<Sensor> {
+    return this._http.post<Sensor>(this.apiUrl.add, sensor);
   }
 
   public update(sensor: Sensor): Observable<Sensor> {
