@@ -1,1 +1,38 @@
-<p>new-sensor works!</p>
+<div fxLayout="row" fxLayoutAlign="space-between stretch" class="mb-4">
+  <div class="header-title">New Sensor</div>
+  <div>
+    <button mat-raised-button color="primary">
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
+  </div>
+</div>
+
+<form [formGroup]="form">
+  <div class="container">
+    <div class="row">
+      <mat-form-field class="col-12 col-md-6">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error>The sensor name is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-12 col-md-6">
+        <mat-label>Measurement Interval</mat-label>
+        <mat-select formControlName="measurementInterval">
+          <mat-option [value]="60000">1 minute</mat-option>
+          <mat-option [value]="120000">2 minute</mat-option>
+          <mat-option [value]="300000">5 minutes</mat-option>
+          <mat-option [value]="600000">10 minutes</mat-option>
+          <mat-option [value]="1800000">30 minutes</mat-option>
+          <mat-option [value]="3600000">1 hour</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-12 mt-1">
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

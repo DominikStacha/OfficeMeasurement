@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiConstant } from '../constants/api.constant';
-import { Sensor } from '../models/sensor';
+import { Sensor } from '../models/sensor.model';
 import { IService } from '../interfaces/IService';
 
 @Injectable()

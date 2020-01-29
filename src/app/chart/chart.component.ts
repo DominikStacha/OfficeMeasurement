@@ -3,8 +3,8 @@ import { Chart } from 'angular-highcharts';
 import { AxisLabelsFormatterContextObject, FormatterCallbackFunction, SeriesOptionsType, TitleOptions } from 'highcharts';
 import { BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ChartPoint } from '../shared/models/chart-point';
-import { Sensor } from '../shared/models/sensor';
+import { ChartPoint } from '../shared/models/chart-point.model';
+import { Sensor } from '../shared/models/sensor.model';
 import { MeasurementService } from '../shared/services/measurement.service';
 
 @Component({

@@ -1,8 +1,8 @@
-import { NavigationItem } from '../models/navigation-item';
+import { NavigationItem } from '../models/navigation-item.model';
 
 export const NavigationConstant: NavigationItem[] = [
   {
-    title: 'New sensor',
+    title: 'New Sensor',
     path: '/new-sensor/'
   },
   {

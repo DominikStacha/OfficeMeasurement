@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiConstant } from '../constants/api.constant';
-import { ChartPoint } from '../models/chart-point';
+import { ChartPoint } from '../models/chart-point.model';
 import { IService } from '../interfaces/IService';
 
 @Injectable()

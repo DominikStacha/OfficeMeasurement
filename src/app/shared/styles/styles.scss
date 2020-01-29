@@ -23,15 +23,38 @@ body {
 }
 
 .mat-drawer-container {
-  padding: 10px;
+  padding: 20px;
   background-color: #f0f0f0;
 }
 
 .mat-sidenav-content {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto !important;
-  padding: 5px 20px 5px 20px;
+  padding: 15px 20px 15px 20px;
   float: none !important;
   background-color: white;
   border-radius: 15px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.mat-focused .mat-form-field-label {
+  color: #0b2f35 !important;
+}
+
+.mat-form-field-underline {
+  background-color: #fae100 !important;
+}
+
+.mat-form-field-ripple {
+  background-color: #fae100 !important;
+}
+
+.mat-raised-button.mat-primary {
+  background-color: #0b2f35;
 }

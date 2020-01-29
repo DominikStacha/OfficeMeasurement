@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiConstant } from '../constants/api.constant';
 import { IService } from '../interfaces/IService';
-import { SensorData } from '../models/sensor-data';
+import { SensorData } from '../models/sensor-data.model';
 
 @Injectable()
 export class ChartService implements IService {

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ChartInterval } from '../shared/constants/chart-interval.constant';
-import { ChartPoint } from '../shared/models/chart-point';
-import { Sensor } from '../shared/models/sensor';
-import { SensorData } from '../shared/models/sensor-data';
+import { ChartPoint } from '../shared/models/chart-point.model';
+import { Sensor } from '../shared/models/sensor.model';
+import { SensorData } from '../shared/models/sensor-data.model';
 import { ChartService } from '../shared/services/chart.service';
 
 @Component({

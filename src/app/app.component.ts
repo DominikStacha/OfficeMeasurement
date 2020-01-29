@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationConstant } from './shared/constants/navigation.constant';
-import { NavigationItem } from './shared/models/navigation-item';
+import { NavigationItem } from './shared/models/navigation-item.model';
 
 @Component({
   selector: 'app-root',
