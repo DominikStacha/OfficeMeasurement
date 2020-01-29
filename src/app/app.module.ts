@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ChartModule } from 'angular-highcharts';
 import { environment } from '../environments/environment';
-import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
@@ -24,7 +23,6 @@ import { SensorService } from './shared/services/sensor.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
     ChartComponent,
     SensorDetailComponent,
     NewSensorComponent
