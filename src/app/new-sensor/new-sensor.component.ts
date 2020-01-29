@@ -36,6 +36,7 @@ export class NewSensorComponent implements OnInit {
   save(): void {
     if (this.form.invalid) {
       this._snackService.open('The form is not valid.');
+      this.form.markAllAsTouched();
       return;
     }
 
