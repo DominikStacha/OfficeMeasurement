@@ -18,6 +18,7 @@ import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 import { ChartService } from './shared/services/chart.service';
 import { MeasurementService } from './shared/services/measurement.service';
 import { SensorService } from './shared/services/sensor.service';
+import { SnackService } from './shared/services/snack.service';
 
 @NgModule({
   declarations: [
@@ -37,12 +38,13 @@ import { SensorService } from './shared/services/sensor.service';
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ChartModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   providers: [
     MeasurementService,
     SensorService,
-    ChartService
+    ChartService,
+    SnackService,
   ],
   bootstrap: [AppComponent]
 })
