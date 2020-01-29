@@ -8,29 +8,29 @@ import { ProgressBarService } from '../services/progress-bar.service';
 @Injectable()
 export class ProgressBarInterceptor implements HttpInterceptor {
   constructor(
-    private progressBarService: ProgressBarService,
+    private _progressBarService: ProgressBarService,
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.progressBarService.show();
+    this._progressBarService.show();
 
     let cancelled = true;
     return next.handle(request).do(
       undefined,
       () => {
         // error
-        this.progressBarService.hide();
+        this._progressBarService.hide();
         cancelled = false;
       },
       () => {
-        this.progressBarService.hide();
+        this._progressBarService.hide();
         // completed
         cancelled = false;
       },
     ).finally(
       () => {
         if (cancelled) {
-          this.progressBarService.hide();
+          this._progressBarService.hide();
         }
       },
     );

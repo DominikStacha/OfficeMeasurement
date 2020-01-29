@@ -9,7 +9,7 @@ export class SnackService {
 
   }
 
-  public open(message: string, duration: number = 2000) {
+  public show(message: string, duration: number = 4000) {
     this._snackBar.open(message, 'OK', {
       duration: duration
     });

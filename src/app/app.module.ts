@@ -16,6 +16,7 @@ import { MaterialModule } from './material/material.module';
 import { NewSensorComponent } from './new-sensor/new-sensor.component';
 import { SensorDetailComponent } from './sensor-detail/sensor-detail.component';
 import { SensorPreviewComponent } from './sensor-preview/sensor-preview.component';
+import { ErrorInterceptor } from './shared/intercepstors/error-interceptor';
 import { ProgressBarInterceptor } from './shared/intercepstors/progress-bar-interceptor';
 import { ChartService } from './shared/services/chart.service';
 import { MeasurementService } from './shared/services/measurement.service';
@@ -50,6 +51,7 @@ import { SnackService } from './shared/services/snack.service';
     ChartService,
     SnackService,
     ProgressBarService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ProgressBarInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
