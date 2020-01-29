@@ -13,8 +13,8 @@ import { ChartService } from '../shared/services/chart.service';
   styleUrls: ['./sensor-detail.component.scss']
 })
 export class SensorDetailComponent implements OnInit {
-  private sensorId: number;
-  private sensorData: SensorData;
+  private _sensorId: number;
+  private _sensorData: SensorData;
 
   sensor: Sensor;
 
@@ -23,22 +23,22 @@ export class SensorDetailComponent implements OnInit {
   airPollutionDataSubject: BehaviorSubject<ChartPoint[]> = new BehaviorSubject<ChartPoint[]>(null);
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private chartDataService: ChartService
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _chartDataService: ChartService
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this._route.params.subscribe(params => {
       if (!params.id) {
-        this.router.navigate(['']);
+        this._router.navigate(['']);
         return;
       }
 
-      this.sensorId = params.id;
+      this._sensorId = params.id;
 
-      this.chartDataService.getLastHoursForSensor(this.sensorId, ChartInterval.W1).subscribe(sensorData => {
-        this.sensorData = sensorData;
+      this._chartDataService.getLastHoursForSensor(this._sensorId, ChartInterval.W1).subscribe(sensorData => {
+        this._sensorData = sensorData;
         this.sensor = sensorData.sensor;
         this.temperatureDataSubject.next(sensorData.temperatureData);
         this.humidityDataSubject.next(sensorData.humidityData);

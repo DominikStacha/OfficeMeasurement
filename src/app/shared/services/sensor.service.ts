@@ -11,15 +11,15 @@ export class SensorService implements IService {
     return ApiConstant.sensor;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient) {
 
   }
 
   public create(sensor: Sensor): Observable<Sensor> {
-    return this.http.post<Sensor>(this.apiUrl.create, sensor);
+    return this._http.post<Sensor>(this.apiUrl.create, sensor);
   }
 
   public update(sensor: Sensor): Observable<Sensor> {
-    return this.http.put<Sensor>(this.apiUrl.update, sensor);
+    return this._http.put<Sensor>(this.apiUrl.update, sensor);
   }
 }

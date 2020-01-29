@@ -20,7 +20,7 @@ export class ChartComponent implements OnInit {
     //update title text
     if (!this.chart) return;
     this.chart.ref.setTitle({
-      text: this.chartTitleText
+      text: this._chartTitleText
     } as TitleOptions);
   }
   @Input() chartType: 'temperature' | 'humidity' | 'airPollution' = 'temperature';
@@ -31,12 +31,18 @@ export class ChartComponent implements OnInit {
 
   chart: Chart;
 
-  private get chartTitleText(): string {
-    if (!this._sensor) return "Loading data..";
-    return this._sensor.name + " - " + this.yAxisName;
+  constructor(
+    private _measurementService: MeasurementService
+  ) {
+
   }
 
-  private get color(): string {
+  private get _chartTitleText(): string {
+    if (!this._sensor) return "Loading data..";
+    return this._sensor.name + " - " + this._yAxisName;
+  }
+
+  private get _color(): string {
     switch (this.chartType) {
       case 'temperature':
         return '#2E86C1';
@@ -49,7 +55,7 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  private get yAxisName(): string {
+  private get _yAxisName(): string {
     switch (this.chartType) {
       case 'temperature':
         return 'Teplota';
@@ -62,7 +68,7 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  private get yAxisFormatterFunction(): FormatterCallbackFunction<AxisLabelsFormatterContextObject> {
+  private get _yAxisFormatterFunction(): FormatterCallbackFunction<AxisLabelsFormatterContextObject> {
     switch (this.chartType) {
       case 'temperature':
         return function () {
@@ -81,12 +87,6 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  constructor(
-    private measurementService: MeasurementService
-  ) {
-
-  }
-
   ngOnInit(): void {
     this.initChart();
     this.dataSubject.pipe(filter(chartData => !!chartData)).subscribe(chartData => {
@@ -101,7 +101,7 @@ export class ChartComponent implements OnInit {
       },
 
       title: {
-        text: this.chartTitleText
+        text: this._chartTitleText
       },
 
       tooltip: {
@@ -121,10 +121,10 @@ export class ChartComponent implements OnInit {
 
       yAxis: {
         title: {
-          text: this.yAxisName
+          text: this._yAxisName
         },
         labels: {
-          formatter: this.yAxisFormatterFunction
+          formatter: this._yAxisFormatterFunction
         }
       }
     });
@@ -136,10 +136,10 @@ export class ChartComponent implements OnInit {
 
     //add new data serie
     this.chart.addSeries({
-      name: this.yAxisName,
+      name: this._yAxisName,
       showInLegend: false,
       data: chartData,
-      color: this.color
+      color: this._color
     } as SeriesOptionsType, true, true);
   }
 }

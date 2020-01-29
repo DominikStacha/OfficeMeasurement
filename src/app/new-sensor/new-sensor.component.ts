@@ -13,10 +13,10 @@ export class NewSensorComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private snackService: SnackService,
-    private sensorService: SensorService,
-    private router: Router
+    private _formBuilder: FormBuilder,
+    private _snackService: SnackService,
+    private _sensorService: SensorService,
+    private _router: Router
   ) {
 
   }
@@ -26,7 +26,7 @@ export class NewSensorComponent implements OnInit {
   }
 
   createForm(): FormGroup {
-    return this.formBuilder.group({
+    return this._formBuilder.group({
       name: ['', Validators.required],
       description: [''],
       measurementInterval: [300000]
@@ -35,13 +35,13 @@ export class NewSensorComponent implements OnInit {
 
   save(): void {
     if (this.form.invalid) {
-      this.snackService.open('The form is not valid.');
+      this._snackService.open('The form is not valid.');
       return;
     }
 
-    this.sensorService.create(this.form.value).subscribe((createdSensor) => {
-      this.snackService.open('The sensor was successfully created.');
-      this.router.navigate(['sensor', createdSensor.id]);
-    })
+    this._sensorService.create(this.form.value).subscribe((createdSensor) => {
+      this._snackService.open('The sensor was successfully created.');
+      this._router.navigate(['sensor', createdSensor.id]);
+    });
   }
 }

@@ -11,11 +11,11 @@ export class MeasurementService implements IService {
     return ApiConstant.measurement;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient) {
 
   }
 
   public testTemperatureData(): Observable<ChartPoint[]> {
-    return this.http.get<ChartPoint[]>(this.apiUrl.testTemperatureData);
+    return this._http.get<ChartPoint[]>(this.apiUrl.testTemperatureData);
   }
 }

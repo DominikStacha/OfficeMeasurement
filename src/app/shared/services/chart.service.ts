@@ -11,7 +11,7 @@ export class ChartService implements IService {
     return ApiConstant.chartData;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient) {
 
   }
 
@@ -25,6 +25,6 @@ export class ChartService implements IService {
       params['limitCount'] = limitCount;
     }
 
-    return this.http.get<SensorData>(this.apiUrl.getLastHoursForSensor, { params: params });
+    return this._http.get<SensorData>(this.apiUrl.getLastHoursForSensor, { params: params });
   }
 }
