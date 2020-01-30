@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { AxisLabelsFormatterContextObject, FormatterCallbackFunction, SeriesOptionsType, TitleOptions } from 'highcharts';
 import { ChartPoint } from '../shared/models/chart-point.model';
-import { Sensor } from '../shared/models/sensor.model';
 
 @Component({
   selector: 'chart',
@@ -10,21 +9,10 @@ import { Sensor } from '../shared/models/sensor.model';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-  private _sensor: Sensor;
+  chart: Chart;
   private _data: ChartPoint[];
 
-  chart: Chart;
-
   @Input() chartType: 'temperature' | 'humidity' | 'airPollution' = 'temperature';
-  @Input() set sensor(value: Sensor) {
-    this._sensor = value;
-
-    //update title text
-    if (!this.chart || !this.chart.ref) return;
-    this.chart.ref.setTitle({
-      text: this._chartTitleText
-    } as TitleOptions);
-  }
   @Input() set data(value: ChartPoint[]) {
     this._data = value;
 
@@ -32,10 +20,8 @@ export class ChartComponent implements OnInit {
       this.setChartData(this._data);
   };
 
-
   private get _chartTitleText(): string {
-    if (!this._sensor) return "Loading data..";
-    return this._sensor.name + " - " + this._yAxisName;
+    return this._yAxisName;
   }
 
   private get _color(): string {
@@ -54,13 +40,13 @@ export class ChartComponent implements OnInit {
   private get _yAxisName(): string {
     switch (this.chartType) {
       case 'temperature':
-        return 'Teplota';
+        return 'Temperature';
 
       case 'humidity':
-        return 'Vlhkost';
+        return 'Humidity';
 
       case 'airPollution':
-        return 'Znečištění vzduchu';
+        return 'Air pollution';
     }
   }
 
@@ -115,7 +101,7 @@ export class ChartComponent implements OnInit {
 
       xAxis: {
         title: {
-          text: 'Čas měření'
+          text: 'Time'
         },
         type: 'datetime'
       },
