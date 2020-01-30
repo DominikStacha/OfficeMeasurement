@@ -1,3 +1,15 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2>
+    {{ sensorData.sensor.name }}
+  </h2>
+
+  <h4>
+    T: {{ sensorData.lastTemperature }} °C |
+    H: {{ sensorData.lastHumidity }} % |
+    AP: {{ sensorData.lastAirPollution }} PPM
+  </h4>
+</div>
+
 <div class="chart">
   <chart [chartType]="'temperature'" [data]="sensorData.temperatureData"></chart>
 </div>
