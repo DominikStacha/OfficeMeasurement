@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChartInterval } from '../shared/constants/chart-interval.constant';
+import { ChartScopeInterval } from '../shared/constants/chart-scope-interval.constant';
 import { SensorData } from '../shared/models/sensor-data.model';
 import { MeasurementService } from '../shared/services/measurement.service';
 
@@ -10,6 +11,10 @@ import { MeasurementService } from '../shared/services/measurement.service';
   styleUrls: ['./sensor-detail.component.scss']
 })
 export class SensorDetailComponent implements OnInit {
+  chartScopeIntervals: { key: number, value: string }[];
+  selectedIntervalScope: number = ChartScopeInterval.W1;
+  chartScopeFormControl = new FormControl(this.selectedIntervalScope);
+
   sensorId: number;
   sensorData: SensorData;
 
@@ -17,7 +22,14 @@ export class SensorDetailComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _measurementService: MeasurementService
-  ) { }
+  ) {
+    this.chartScopeIntervals = Object.keys(ChartScopeInterval).map(key => {
+      return {
+        key: ChartScopeInterval[key],
+        value: key
+      }
+    });
+  }
 
   ngOnInit(): void {
     this._route.params.subscribe(params => {
@@ -28,7 +40,15 @@ export class SensorDetailComponent implements OnInit {
 
       this.sensorId = params.id;
 
-      this._measurementService.getSensorChartData(this.sensorId, ChartInterval.W1).subscribe(sensorData => {
+      this._measurementService.getSensorChartData(this.sensorId, this.selectedIntervalScope).subscribe(sensorData => {
+        this.sensorData = sensorData;
+      });
+    });
+
+    this.chartScopeFormControl.valueChanges.subscribe(value => {
+      this.selectedIntervalScope = value;
+
+      this._measurementService.getSensorChartData(this.sensorId, this.selectedIntervalScope).subscribe(sensorData => {
         this.sensorData = sensorData;
       });
     })

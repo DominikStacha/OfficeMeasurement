@@ -3,7 +3,7 @@ import { Sensor } from './sensor.model';
 
 export class SensorData {
   sensor: Sensor;
-  lastHours: number;
+  hourScope: number;
   lastTemperature: number | null;
   lastHumidity: number | null;
   lastAirPollution: number | null;

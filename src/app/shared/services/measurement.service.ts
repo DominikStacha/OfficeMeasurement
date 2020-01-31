@@ -21,10 +21,10 @@ export class MeasurementService implements IService {
     return this._http.get<ChartPoint[]>(this.apiUrl.testTemperatureData);
   }
 
-  public getSensorChartData(sensorId: number, lastHours: number, limitCount?: number): Observable<SensorData> {
+  public getSensorChartData(sensorId: number, hourScope: number, limitCount?: number): Observable<SensorData> {
     let params = {
       sensorId: sensorId.toString(),
-      lastHours: lastHours.toString()
+      hourScope: hourScope.toString()
     }
 
     if (limitCount) {
@@ -34,10 +34,10 @@ export class MeasurementService implements IService {
     return this._http.get<SensorData>(this.apiUrl.getSensorChartData, { params: params });
   }
 
-  public getPreviewData(lastHours: number = 24): Observable<SensorPreview[]> {
+  public getPreviewData(hourScope: number = 24): Observable<SensorPreview[]> {
     return this._http.get<SensorPreview[]>(this.apiUrl.getPreviewData, {
       params: {
-        lastHours: lastHours.toString()
+        hourScope: hourScope.toString()
       }
     });
   }

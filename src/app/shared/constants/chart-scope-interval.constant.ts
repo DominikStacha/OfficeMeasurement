@@ -1,4 +1,4 @@
-export const ChartInterval = {
+export const ChartScopeInterval = {
   H1: 1,
   H4: 4,
   H12: 12,
