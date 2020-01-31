@@ -34,4 +34,7 @@ export class SensorDetailComponent implements OnInit {
     })
   }
 
+  edit(): void {
+    this._router.navigate(['edit-sensor', this.sensorId]);
+  }
 }

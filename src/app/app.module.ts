@@ -22,6 +22,8 @@ import { MeasurementService } from './shared/services/measurement.service';
 import { ProgressBarService } from './shared/services/progress-bar.service';
 import { SensorService } from './shared/services/sensor.service';
 import { SnackService } from './shared/services/snack.service';
+import { EditSensorComponent } from './edit-sensor/edit-sensor.component';
+import { SensorFormComponent } from './sensor-form/sensor-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { SnackService } from './shared/services/snack.service';
     ChartComponent,
     SensorDetailComponent,
     NewSensorComponent,
-    SensorPreviewComponent
+    SensorPreviewComponent,
+    EditSensorComponent,
+    SensorFormComponent
   ],
   imports: [
     CommonModule,

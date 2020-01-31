@@ -10,7 +10,7 @@ import { SnackService } from '../shared/services/snack.service';
   styleUrls: ['./new-sensor.component.scss']
 })
 export class NewSensorComponent implements OnInit {
-  form: FormGroup;
+  private form: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,

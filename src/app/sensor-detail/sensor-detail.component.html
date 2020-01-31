@@ -1,23 +1,25 @@
-<div fxLayout="row" fxLayoutAlign="space-between center">
+<div fxLayout="row" fxLayoutAlign="space-between start">
   <h2>
-    {{ sensorData.sensor.name }}
+    {{ sensorData?.sensor.name }}
   </h2>
 
-  <h4>
-    T: {{ sensorData.lastTemperature }} °C |
-    H: {{ sensorData.lastHumidity }} % |
-    AP: {{ sensorData.lastAirPollution }} PPM
-  </h4>
+  <div>
+    <button mat-raised-button color="primary" (click)="edit()">
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+  </div>
+</div>
+
+
+<div class="chart">
+  <chart [chartType]="'temperature'" [data]="sensorData?.temperatureData"></chart>
 </div>
 
 <div class="chart">
-  <chart [chartType]="'temperature'" [data]="sensorData.temperatureData"></chart>
+  <chart [chartType]="'humidity'" [data]="sensorData?.humidityData"></chart>
 </div>
 
 <div class="chart">
-  <chart [chartType]="'humidity'" [data]="sensorData.humidityData"></chart>
-</div>
-
-<div class="chart">
-  <chart [chartType]="'airPollution'" [data]="sensorData.airPollutionData"></chart>
+  <chart [chartType]="'airPollution'" [data]="sensorData?.airPollutionData"></chart>
 </div>

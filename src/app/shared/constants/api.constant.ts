@@ -9,6 +9,7 @@ export const ApiConstant = {
   },
 
   sensor: {
+    get: ApiUrl + "Sensor",
     add: ApiUrl + "Sensor/Add",
     update: ApiUrl + "Sensor/Update",
   },

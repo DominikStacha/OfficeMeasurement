@@ -3,11 +3,11 @@
     <a href="sensor/{{preview.sensor.id}}">{{ preview.sensor.name }}</a>
   </h2>
 
-  <h4>
-    T: {{ preview.lastTemperature }} °C |
-    H: {{ preview.lastHumidity }} % |
-    AP: {{ preview.lastAirPollution }} PPM
-  </h4>
+  <div fxLayout="column">
+    <span class="last-measurement">T: {{ preview.lastTemperature }} °C</span>
+    <span class="last-measurement">H: {{ preview.lastHumidity }} %</span>
+    <span class="last-measurement">AP: {{ preview.lastAirPollution }} PPM</span>
+  </div>
 </div>
 
 <chart [chartType]="'temperature'" [data]="preview.temperatureData"></chart>

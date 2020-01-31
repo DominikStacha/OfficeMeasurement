@@ -15,6 +15,10 @@ export class SensorService implements IService {
 
   }
 
+  public get(sensorId: number): Observable<Sensor> {
+    return this._http.get<Sensor>(this.apiUrl.get + "/" + sensorId);
+  }
+
   public add(sensor: Sensor): Observable<Sensor> {
     return this._http.post<Sensor>(this.apiUrl.add, sensor);
   }
