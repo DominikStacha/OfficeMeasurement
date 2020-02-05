@@ -12,7 +12,7 @@ export class ChartComponent implements OnInit {
   chart: Chart;
   private _data: ChartPoint[];
 
-  @Input() chartType: 'temperature' | 'humidity' | 'airPollution' = 'temperature';
+  @Input() chartType: 'temperature' | 'humidity' | 'airPollution';
   @Input() set data(value: ChartPoint[]) {
     this._data = value;
 
@@ -117,7 +117,7 @@ export class ChartComponent implements OnInit {
       }
     });
 
-    if(this._data) {
+    if (this._data) {
       this.setChartData(this._data);
     }
   }

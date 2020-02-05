@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private _router: Router,
-    private _progressBarService: ProgressBarService
+    public _progressBarService: ProgressBarService
   ) {
 
   }
