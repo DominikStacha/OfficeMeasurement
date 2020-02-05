@@ -1,5 +1,5 @@
 
-export const ApiUrl = "http://localhost:7000/api/";
+export const ApiUrl = "http://93.95.33.48:7000/api/";
 
 export const ApiConstant = {
   measurement: {

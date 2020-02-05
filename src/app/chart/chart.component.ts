@@ -16,7 +16,7 @@ export class ChartComponent implements OnInit {
   @Input() set data(value: ChartPoint[]) {
     this._data = value;
 
-    if (this._data)
+    if (this._data && this.chart)
       this.setChartData(this._data);
   };
 
@@ -70,10 +70,11 @@ export class ChartComponent implements OnInit {
   }
 
   constructor() {
-    this.initChart();
   }
 
   ngOnInit(): void {
+    this.initChart();
+
     this.chart.ref$.subscribe((chart) => {
       this.chart.ref.setTitle({
         text: this._chartTitleText
@@ -115,6 +116,10 @@ export class ChartComponent implements OnInit {
         }
       }
     });
+
+    if(this._data) {
+      this.setChartData(this._data);
+    }
   }
 
   setChartData(chartData: ChartPoint[]): void {

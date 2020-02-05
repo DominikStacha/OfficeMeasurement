@@ -11,7 +11,7 @@ import { SnackService } from '../shared/services/snack.service';
   styleUrls: ['./edit-sensor.component.scss']
 })
 export class EditSensorComponent implements OnInit {
-  private form: FormGroup;
+  form: FormGroup;
 
   sensorId: number;
   sensor: Sensor;
